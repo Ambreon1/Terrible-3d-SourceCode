@@ -1,0 +1,646 @@
+{
+	"name": "Список событий 1",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "Чуствительность",
+			"type": "number",
+			"initialValue": "15",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 296788735713108
+		},
+		{
+			"eventType": "variable",
+			"name": "ЗдоровьеДома",
+			"type": "number",
+			"initialValue": "17",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 788348677159454
+		},
+		{
+			"eventType": "variable",
+			"name": "Coins",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 469733251852197
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 719306044089877
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "ааа",
+					"sid": 308908400351128
+				}
+			],
+			"sid": 432901437615529
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 994783926720746
+				}
+			],
+			"actions": [
+				{
+					"id": "look-parallel-to-layout",
+					"objectClass": "3DКамера",
+					"sid": 701591028403500,
+					"parameters": {
+						"cam-x": "Спрайт.X",
+						"cam-y": "Спрайт.Y",
+						"cam-z": "10",
+						"look-angle": "Спрайт.Angle"
+					}
+				},
+				{
+					"id": "set-angle",
+					"objectClass": "Спрайт",
+					"sid": 549835916757546,
+					"parameters": {
+						"angle": "3DКамера.CameraXRotation"
+					}
+				},
+				{
+					"id": "set-angle-toward-position",
+					"objectClass": "Рик",
+					"sid": 793597884002809,
+					"parameters": {
+						"x": "3DФигуры2.X",
+						"y": "3DФигуры2.Y"
+					}
+				},
+				{
+					"id": "set-speed",
+					"objectClass": "Рик",
+					"sid": 151539626387215,
+					"behaviorType": "Pathfinding",
+					"parameters": {
+						"speed": "-50"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "Текст",
+					"sid": 804468395349997,
+					"parameters": {
+						"text": "\"FPS: \"&fps"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "COINS",
+					"sid": 331662341628374,
+					"parameters": {
+						"text": "\"coins: \"&Coins"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "HPHOME",
+					"sid": 132459762518592,
+					"parameters": {
+						"text": "\"HP HOME: \"&ЗдоровьеДома"
+					}
+				}
+			],
+			"sid": 387240140055357
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-click",
+					"objectClass": "Мышь",
+					"sid": 874292955654511,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "spawn-another-object",
+					"objectClass": "Спрайт",
+					"sid": 193651033088451,
+					"parameters": {
+						"object": "3DФигуры4",
+						"layer": "1",
+						"image-point": "1",
+						"create-hierarchy": false
+					}
+				}
+			],
+			"sid": 927008502599758
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Спрайт",
+					"sid": 583095710633310,
+					"parameters": {
+						"object": "3DФигуры2"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 869075462931235,
+					"parameters": {
+						"layout": "Макет 2"
+					}
+				}
+			],
+			"sid": 656870156172473
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-movement",
+					"objectClass": "Мышь",
+					"sid": 673295824187637
+				}
+			],
+			"actions": [
+				{
+					"id": "rotate-camera",
+					"objectClass": "3DКамера",
+					"sid": 233391924544731,
+					"parameters": {
+						"rotate-x": "Мышь.MovementX / Чуствительность",
+						"rotate-y": "Мышь.MovementY / Чуствительность",
+						"min-polar-angle": "20",
+						"max-polar-angle": "180"
+					}
+				}
+			],
+			"sid": 955258726438623
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-click",
+					"objectClass": "Мышь",
+					"sid": 737694523755229,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "request-pointer-lock",
+					"objectClass": "Мышь",
+					"sid": 729903553763464
+				}
+			],
+			"sid": 644653495790502
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Клавиатура",
+					"sid": 387752642370071,
+					"parameters": {
+						"key": 87
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Спрайт",
+					"sid": 794275559769182,
+					"behaviorType": "Машина",
+					"parameters": {
+						"control": "accelerate"
+					}
+				}
+			],
+			"sid": 738896981274398
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Клавиатура",
+					"sid": 712519704425289,
+					"parameters": {
+						"key": 83
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Спрайт",
+					"sid": 804795649523282,
+					"behaviorType": "Машина",
+					"parameters": {
+						"control": "brake"
+					}
+				}
+			],
+			"sid": 573475294719263
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Клавиатура",
+					"sid": 683250014146904,
+					"parameters": {
+						"key": 65
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Спрайт",
+					"sid": 295980899253126,
+					"behaviorType": "Машина",
+					"parameters": {
+						"control": "steer-left"
+					}
+				}
+			],
+			"sid": 509007985420719
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Клавиатура",
+					"sid": 282435845265544,
+					"parameters": {
+						"key": 68
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Спрайт",
+					"sid": 113667295172230,
+					"behaviorType": "Машина",
+					"parameters": {
+						"control": "steer-right"
+					}
+				}
+			],
+			"sid": 235234177628905
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "3DФигуры4",
+					"sid": 389399764974407,
+					"parameters": {
+						"object": "3DФигуры2"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "3DФигуры4",
+					"sid": 774101967661658
+				}
+			],
+			"sid": 853795579108809
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 242188040763888,
+					"parameters": {
+						"variable": "ЗдоровьеДома",
+						"comparison": 0,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 944814801600773,
+					"parameters": {
+						"layout": "Game OVer"
+					}
+				}
+			],
+			"sid": 685392591220661
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 516285087725376,
+					"parameters": {
+						"interval-seconds": "0.1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "find-path",
+					"objectClass": "Рик",
+					"sid": 337864527641607,
+					"behaviorType": "Pathfinding",
+					"parameters": {
+						"x": "3DФигуры2.X",
+						"y": "3DФигуры2.Y"
+					}
+				}
+			],
+			"sid": 428094532438481
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-path-found",
+					"objectClass": "Рик",
+					"sid": 352152542578419,
+					"behaviorType": "Pathfinding"
+				}
+			],
+			"actions": [
+				{
+					"id": "move-along-path",
+					"objectClass": "Рик",
+					"sid": 523882437751546,
+					"behaviorType": "Pathfinding"
+				}
+			],
+			"sid": 720941291192264
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 105687490596996,
+					"parameters": {
+						"interval-seconds": "3.0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 146748780514809,
+					"parameters": {
+						"object-to-create": "Рик",
+						"layer": "2",
+						"x": "random(1024)",
+						"y": "random(1024)",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				}
+			],
+			"sid": 838292768610738
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Рик",
+					"sid": 481653555754195,
+					"parameters": {
+						"object": "3DФигуры2"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Аудио",
+					"sid": 558155274835660,
+					"parameters": {
+						"audio-file": "inecraft_death",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Рик",
+					"sid": 448722301876647
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 828515739971929,
+					"parameters": {
+						"variable": "ЗдоровьеДома",
+						"value": "-1"
+					}
+				}
+			],
+			"sid": 389494243077242
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Рик",
+					"sid": 739482163642049,
+					"parameters": {
+						"object": "3DФигуры4"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "Рик",
+					"sid": 513681580628979
+				},
+				{
+					"id": "destroy",
+					"objectClass": "3DФигуры4",
+					"sid": 466726914498282
+				},
+				{
+					"id": "add-to-eventvar",
+					"objectClass": "System",
+					"sid": 942872191684162,
+					"parameters": {
+						"variable": "Coins",
+						"value": "3"
+					}
+				}
+			],
+			"sid": 689133511629648
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 332953007127043,
+					"parameters": {
+						"interval-seconds": "0.01"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-object-to-target",
+					"objectClass": "Спрайт8",
+					"sid": 426297239281317,
+					"behaviorType": "Турель",
+					"parameters": {
+						"target": "Рик"
+					}
+				},
+				{
+					"id": "add-object-to-target",
+					"objectClass": "tURRETFGGS",
+					"sid": 910532039330159,
+					"behaviorType": "Турель",
+					"parameters": {
+						"target": "Рик"
+					}
+				},
+				{
+					"id": "set-angle-toward-position",
+					"objectClass": "tURRETFGGS",
+					"sid": 887927358147136,
+					"parameters": {
+						"x": "Рик.X",
+						"y": "Рик.Y"
+					}
+				},
+				{
+					"id": "set-angle-toward-position",
+					"objectClass": "Спрайт8",
+					"sid": 662614354017384,
+					"parameters": {
+						"x": "Рик.X",
+						"y": "Рик.Y"
+					}
+				}
+			],
+			"sid": 850034467438331
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-shoot",
+					"objectClass": "Спрайт8",
+					"sid": 291789403271223,
+					"behaviorType": "Турель"
+				}
+			],
+			"actions": [
+				{
+					"id": "spawn-another-object",
+					"objectClass": "Спрайт8",
+					"sid": 912626704900284,
+					"parameters": {
+						"object": "3DФигуры4",
+						"layer": "\"DFf\"",
+						"image-point": "1",
+						"create-hierarchy": false
+					}
+				}
+			],
+			"sid": 591789850150111
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Спрайт",
+					"sid": 974511394379599,
+					"parameters": {
+						"object": "Sprite"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 863294936484064,
+					"parameters": {
+						"object-to-create": "ааа",
+						"layer": "3",
+						"x": "217",
+						"y": "383",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				}
+			],
+			"sid": 749688371626916
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Спрайт",
+					"sid": 289236320721637,
+					"parameters": {
+						"object": "Sprite"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 276658743913085
+		}
+	],
+	"sid": 843161741617513
+}

@@ -1,0 +1,73 @@
+{
+	"name": "GG",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 423673734789598
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Аудио",
+					"sid": 522997595721366,
+					"parameters": {
+						"audio-file": "46de0aab24bdde4",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 103925869822966,
+					"parameters": {
+						"variable": "ЗдоровьеДома",
+						"value": "17"
+					}
+				}
+			],
+			"sid": 115519544140310
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "Restart",
+					"sid": 570509722634242
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Аудио",
+					"sid": 218301628048453,
+					"parameters": {
+						"audio-file": "evillaugh",
+						"loop": "not-looping",
+						"volume": "-10",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 221893573124412,
+					"parameters": {
+						"layout": "Макет 1"
+					}
+				}
+			],
+			"sid": 643979442307464
+		}
+	],
+	"sid": 382265112774637
+}
